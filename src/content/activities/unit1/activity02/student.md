@@ -12,4 +12,4 @@
 
 **Posibles problemas:** burbujas, ya que el sofware deberá distinguir entre las burbujas y los sensores en el cuerpo de los deportistas, por lo que estas se deben evitar.
 
-#### Esta sería una aplicación interactiva que permite intercambiar información con un sistema de cómputo externo con la capacidad de leer modificar el mundo acuático.**
+#### Esta sería una aplicación interactiva que permite intercambiar información con un sistema de cómputo externo con la capacidad de leer modificar el mundo acuático.
