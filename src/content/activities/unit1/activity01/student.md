@@ -1,17 +1,14 @@
-describe tres ejemplos de sistemas interactivos presentes en la industria del entretenimiento digital. Para cada ejemplo, identifica los dispositivos de entrada y salida utilizados, y explica cómo contribuyen a la experiencia del usuario. Piensa en videojuegos, instalaciones interactivas, experiencias de realidad virtual o aumentada, etc. Finalmente, reflexiona sobre cómo el conocimiento de sistemas físicos interactivos podría enriquecer tus proyectos en el futuro como ingeniero en diseño de entretenimiento digital.
+#### (1) Cine Dinamix 4D
+##### Dispositivos de entrada: sensores, sincronización precisa, software que identifica frame a frame.
+##### Dispositivos de salida: disfusor de humo (neblina), ventiladores (viento), sistema de vibración para sillas, paneles led y reflectores (relámpagos), maquina de humo, sistema de dispersión de olores y movimientos.
 
-#### Cine Dinamix 4D
-##### Dispositivos de entrada:
-##### Dispositivos de salida: disfusor de humo (neblina), viento, vibración, relámpagos, humo, olores y movimientos
-```js
+#### (2) Simulador de carreras logitech
+##### Dispositivos de entrada: volante, pedales, palanca de cambios
+##### Dispositivos de salida: Playstation, Xbox o Pc. Parlantes/audífonos.
 
-```
-#### Simulador de carreras logitec 
-##### Dispositivos de entrada:
-##### Dispositivos de salida:
-
-#### Nintendo switch
-##### Dispositivos de entrada:
-##### Dispositivos de salida:
+#### (3) Xbox 360
+##### Dispositivos de entrada: controles (Joysticks y botones), sensor Kinect
+##### Dispositivos de salida: pantalla, parlantes, sensor Kinect.
 
 #### Reflexión
+##### Los sistemas interactivos están compuestos por dispositivos de entrada y de salida, para poder formar una interacción completa. Se captura información para poder procesarla y luego entregarle algo al usuario, por ello es muy importante identificarlos y entenderlos, para poder crear cada vez mejores interraciones y experiencias más inmersivas y eficientes.
