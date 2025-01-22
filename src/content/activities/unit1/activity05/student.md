@@ -1,7 +1,9 @@
 ### Modelo input/output
 #### Mercedes-Benz Vision AVTR (2020)
-_https://youtu.be/sZgA1lMTSi4?feature=shared&t=118_
+#1 _https://youtu.be/sZgA1lMTSi4?feature=shared&t=118_
 </p>
+#2 _https://youtu.be/q7T5rAMqyd4?feature=shared_
+</p> 
 Es un concepto de automovil Mercedes Benz inspirado en la pelicula _Avatar_.
 Este auto tiene generación dinámica de patrones en tiempo real (output), basada en el movimiento y los datos biométricos de los conductores, captados por sensores biometricos (input).
 </p>
