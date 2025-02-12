@@ -1,6 +1,13 @@
+**¿Puedes identificar algún estado?**  Hay dos estados en el programa. Init: es el estado inicial del pixel, en este estado se espera a capturar y alamacenar el tiempo que el programa lleva corriendo.
+
+**¿Puedes identificar algún evento?** Hay dos eventos en este programa. Spregunta si el estado del pixel es 0, osea apagado o se pregunta si el estado es 9, que el pixel está encendido.
+
+**¿Puedes identificar alguna acción?** Hay dos acciones, si el pixel esta en 0 (evento) entonces se cambia a 9, esa es la acción en respuesta de la pregunta del evento. Si el pixel esta en 9 (evento) entonces se cambia a 0, esa es la acción en respuesta de la pregunta del evento. Aunque estas acciones dependen del intervalo establecido del pixel.
+
+### ¿cómo funciona?
 ```python
 from microbit import *  
-import utime   #acá importa la biblioteca utime, para poder medir y manejar tiempos
+import utime                          #acá importa la biblioteca utime, para poder medir y manejar tiempos
 
 class Pixel:   #Se creó la clase llamada pixel
     def __init__(self,pixelX,pixelY,initState,interval):  #Se crea un constructor parametrizado llamado init
@@ -22,16 +29,18 @@ class Pixel:   #Se creó la clase llamada pixel
                                             #Sino se cumplió el if, si el estado del pixel está en "WaitTimeout", se ejecuta lo siguiente:
             if utime.ticks_diff(utime.ticks_ms(),self.startTime) > self.interval: #utime.ticks_diff sacá la diferencia entre: utime.ticks_ms - self.startTime = unos ms, entonces si ese resultado es mayor que el intervalo establecido, se cambia el estado del pixel a continuación.
                 self.startTime = utime.ticks_ms()  #El tiempo actual se vuelve a guardar self.startTime
-                if self.pixelState == 9:
-                    self.pixelState = 0
-                else:
+                if self.pixelState == 9:           #Este condicional evalua si el pixel está encendido, si sí está encendido entonces:
+                    self.pixelState = 0            # Poner el estado del pixel en 0, osea apagarlo
+                else:                              # Sino está en estado 9, eso quiere decir que estaba en estado 0, entonces se hace lo contrario que es encenderlo (9). 
                     self.pixelState = 9
-                display.set_pixel(self.pixelX,self.pixelY,self.pixelState)
+                display.set_pixel(self.pixelX,self.pixelY,self.pixelState) # Se ponen las coordenadas y estado en el que se va a mostrar el pixel
 
-pixel1 = Pixel(0,0,0,1000)
-pixel2 = Pixel(4,4,0,500)
+pixel1 = Pixel(0,0,0,1000)                         #Se crea un obejto tipo pixel, llamado pixel1, se inicia en 0, esta en
+                                                   #las coordenadas (0,0), el intervalo de tiempo de 1000ms
+pixel2 = Pixel(4,4,0,500)                          #Se crea un obejto tipo pixel, llamado pixel2, se inicia en 0, esta en
+                                                   #las coordenadas (4,4), el intervalo de tiempo de 500ms
 
-while True:
-    pixel1.update()
-    pixel2.update()
+while True:                                        #Ciclo infinito
+    pixel1.update()                                #El pixel1 corre el método update, para poder parpadear
+    pixel2.update()                                #El pixel2 corre el método update, para poder parpadear
 ```
