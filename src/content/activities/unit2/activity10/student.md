@@ -23,20 +23,24 @@ display.show(Image.HAPPY)                 #Se muestra la carita feliz
 **Acción:**
 Como se cumplió la condición que el evento esperaba entonces se hace lo siguiente:
 ```python
-      display.show(Image.HAPPY)         #Se muestra la carita feliz.
-      start_time = utime.ticks_ms()     #El tiempo actual se guarda en start_time
-      interval = HAPPY_INTERVAL         #interval se hace igual al intervalo de la carita feliz, para saber cuanto se deja
-      current_state = STATE_HAPPY       #El estado actual pasa a ser el estado feliz 
+      display.show(Image.HAPPY)       #Se muestra la carita feliz.
+      start_time = utime.ticks_ms()   #El tiempo actual se guarda en start_time
+      interval = HAPPY_INTERVAL       #interval se hace igual al intervalo de la carita feliz, para saber cuanto se deja de mostrar
+      current_state = STATE_HAPPY     #El estado actual pasa a ser el estado feliz 
 ```
-### El sistema pasó el vector 1 de prueba satisfactoriamente.
+### El sistema pasó el vector 2 de prueba satisfactoriamente.
 
 ### <p align="center">  Vector 3 </p> 
 **Estado:** SAD.  Si el estado actual es igual a SAD, entonces entra al if porque se cumple la condición y a continuación se van a realizar las acciones.
-**Evento:** ```if utime.ticks_diff(utime.ticks_ms(), start_time) > interval:``` Si la diferencia del tiempo actual con 
+
+**Evento:** ```if utime.ticks_diff(utime.ticks_ms(), start_time) > interval:``` Si la diferencia del tiempo actual con el tiempo anteriormente guardado es mayor al intervalo de SAD, entonces se hacen las siguientes acciones.  Esto es para evaluar si el intervalo ya pasó y ya se puede realizar un cambio.
 
 **Acción:**
-Como se cumplió la condición que el evento esperaba entonces se hace lo siguiente:
+Como se cumplió la condición de que el tiempo es mayor al intervalo, entonces se hace lo siguiente:
 ```python
- 
+ display.show(Image.HAPPY)      #Se muestra la imagen de carita feliz
+ start_time = utime.ticks_ms()  #El tiempo actual se guarda en start_time
+ interval = HAPPY_INTERVAL      #Interval se hace igual al intervalo de la carita feliz, para saber cuanto se deja de mostrar
+ current_state = STATE_HAPPY    #El estado actual pasa a ser el estado feliz
 ```
-### El sistema pasó el vector 1 de prueba satisfactoriamente.
+### El sistema pasó el vector 3 de prueba satisfactoriamente.
