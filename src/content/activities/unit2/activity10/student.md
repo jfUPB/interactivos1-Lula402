@@ -1,5 +1,6 @@
 ### Explicación
 Este programa no tiene concurrencia, porque todo se hace de manera lineal en este caso. Solo tenemos una variable que guarda el estado, osea que solo puede haber un estado activo a la vez. Además para que cambie de estado y de evento, debe cumplirse una condición, si la condición  no se cumple entonces pasa a evaluar es siguiente estado a ver si se hace la acción o no.
+El momento en el que considero que puede haber concurrencia, es cuando constantemente se captura el tiempo actual, miestras lo otro sigue pasando, sin importar si se presiona un botón o si se cumple una condición de intervalo. 
 
 ### <p align="center">  Vector 1 </p> 
 **Estado:** Init. Es el estado con el que predeterminamente inicia.
