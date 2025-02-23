@@ -31,7 +31,7 @@ while True:
                 display.scroll(tiempo)    #Se muestra el tiempo}
                 utime.sleep_ms(200)
                 
-        if accelerometer.was_gesture('shake'): #Evento de shake para armarla
+        if accelerometer.is_gesture('shake'): #Evento de shake para armarla
             current_state = state_armada
             start_time = utime.ticks_ms()   #Se guarda el tiempo actual en start_time
 
