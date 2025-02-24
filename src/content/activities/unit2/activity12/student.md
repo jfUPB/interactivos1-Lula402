@@ -1,4 +1,9 @@
 ### </p><p align="center">Bomba temporizada</p> 
+### Video
+https://youtube.com/shorts/uI8WmhPNSsM?feature=share
+
+### Código
+
 ```python
 from microbit import *
 import utime
