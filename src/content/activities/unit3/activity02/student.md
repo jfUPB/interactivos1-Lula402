@@ -1,5 +1,6 @@
 ### Código
 ```python
+# Imports go at the top
 from microbit import *
 import utime
 import music
@@ -70,6 +71,7 @@ while True:
             if accelerometer.was_gesture('shake'):
                 pass
 
+
     elif current_state == state_explotada:
         if pin_logo.is_touched(): # Evento de touch el logo para reiniciar
             tiempo = 20
@@ -78,5 +80,5 @@ while True:
 ```
 
 ### Cómo implementé la secuencia de desactivación?
-La secuencia de desarmed, la implementé como eventos dentro del estado de armada. Si se cumplen las condiciones (eventos) de que los botones fueron presionados en el orden correcto entonces la bomba se desarma, se resetea el tiempo = 20, se muestra un mensaje al usuario de "RESTART" y se regresa al estado de configuración.
+La secuencia de desarmed, la implementé como eventos dentro del estado de armada. Si se cumplen las condiciones (eventos) de que los botones fueron presionados en el orden correcto entonces la bomba se desarma, se resetea el tiempo = 20, se muestra un mensaje al usuario de "RESTART" y se regresa al estado de configuración. Si el patrón es incorrecto, entonces se muestra "ERROR".
 
