@@ -75,7 +75,7 @@ def tareaBomba():
     elif current_state == state_explotada:
         if isEvent == True:   #Se disminuye el temporizador
             isEvent = False
-            if eventData == 'S': # Evento de touch el logo para reiniciar
+            if eventData == 'T': # Evento de touch el logo para reiniciar
                 tiempo = 20
                 display.scroll('AGAIN')
                 current_state = state_confi  #Vuelve a confi
