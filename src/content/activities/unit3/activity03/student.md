@@ -1,4 +1,5 @@
 ### Bomba 3.0
+#### Micro:bit y puerto serial
 ```python
 # Imports go at the top
 from microbit import *
@@ -38,39 +39,38 @@ def tareaBomba():
             if eventData == 'S': #Evento de shake para armarla
                 current_state = state_armada
                 start_time = utime.ticks_ms()   #Se guarda el tiempo actual en start_time
+                secuencia_user.clear()
 
     elif current_state == state_armada:
+
+        if utime.ticks_diff(utime.ticks_ms(), start_time) > intervalo: #"Si ha pasado más de un segundo desde la última vez que revisé el tiempo..."
+            start_time = utime.ticks_ms()  # Reiniciar el temporizador
+            tiempo -= 1
+            display.scroll(tiempo)    #Se muestra el tiempo
+           
+            if tiempo == 0:  # Evento de que el tiempo se acabó
+                display.scroll('BOOM')    #mostrar BOOM
+                music.play(music.FUNERAL) #sonido de BOOM, osea funeral
+                current_state = state_explotada
+
         if isEvent == True:   #Se disminuye el temporizador
-     #      isEvent = False
-            if utime.ticks_diff(utime.ticks_ms(), start_time) > intervalo: #"Si ha pasado más de un segundo desde la última vez que revisé el tiempo..."
-                start_time = utime.ticks_ms()  # Reiniciar el temporizador
-                tiempo -= 1
-                display.scroll(tiempo)    #Se muestra el tiempo
-               
-                if tiempo == 0:  # Evento de que el tiempo se acabó
-                    display.scroll('BOOM')    #mostrar BOOM
-                    music.play(music.FUNERAL) #sonido de BOOM, osea funeral
-                    current_state = state_explotada
-        
+            isEvent = False
             if eventData == 'A':
-                secuencia_user.append('A') 
-                if eventData == 'B':              
-                    secuencia_user.append('B') 
-                    if eventData == 'A':
-                        secuencia_user.append('A') 
-                        if eventData == 'S':       
-                            secuencia_user.append('S') 
-                            if  secuencia_user==secuencia_correcta:          
-                                tiempo = 20
-                                display.scroll('RESTART')
-                                current_state = state_confi  #Vuelve a confi
-    
-                            else: 
-                                display.scroll('ERROR')
-    
-                            secuencia_user.clear()
-            if eventData == 'S':
-                    pass                
+                secuencia_user.append('A')
+            if eventData == 'B':              
+                secuencia_user.append('B')              
+            if eventData == 'S':       
+                secuencia_user.append('S')
+                display.show('S')
+                sleep(250)
+                if  secuencia_user==secuencia_correcta:          
+                    tiempo = 20
+                    display.scroll('RESTART')
+                    display.scroll(tiempo)    #Se muestra el tiempo
+                    current_state = state_confi  #Vuelve a confi
+                else: 
+                    display.scroll('ERROR')
+                    secuencia_user.clear()
 
     elif current_state == state_explotada:
         if isEvent == True:   #Se disminuye el temporizador
