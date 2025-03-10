@@ -1,11 +1,12 @@
 ### Bomba 3.0 desde p5.js
+#### Se envia desde p5 por el puerto al código del Micro:bit, es decir recibe desde Micro:bit y desde los botones de p5.
 ```js
 let port;
 let connectBtn;
 
 function setup() {
     createCanvas(400, 400);
-    background('#FFACA6');
+    background('#FF5C51');
     port = createSerial();
     connectBtn = createButton('Connect to micro:bit');
     connectBtn.position(140, 150);
