@@ -120,7 +120,7 @@ function draw() {
  }
   
  else if (current_state == state_explotada){
-        if (pin_logo.is_touched()){ // Evento de touch el logo para reiniciar
+        if (btnTClicked == true){ // Evento de touch el logo para reiniciar
             tiempo = 20
             displayRestart();
             current_state = state_confi  //Vuelve a confi
@@ -142,7 +142,7 @@ function displayBoom() {
 
 function displayError() {
   mensaje = "ERROR";
-  mensajeColor = "#9E9E9E"; // Amarillo
+  mensajeColor = "#9E9E9E"; // Gris
   x = 140;
 }
 
@@ -167,5 +167,4 @@ function sendBtnSClick() {
 function sendBtnTClick() {
     btnTClicked = true
 }
-
 ```
