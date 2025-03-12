@@ -1,5 +1,7 @@
 ```js
+let port;
 let connectBtn;
+let sendBtnA, sendBtnB, sendBtnS, sendBtnT;
 let btnAClicked = false;
 let btnBClicked = false;
 let btnSClicked = false;
@@ -26,23 +28,24 @@ let mensajeColor = "#FFFFFF";
 function setup() {
   createCanvas(400, 400);
   background('#FFECB4');
+  port = createSerial();
   connectBtn = createButton('Connect to micro:bit');
   connectBtn.position(135, 100);
   connectBtn.mousePressed(connectBtnClick);
   
-  let sendBtnA = createButton('A');
+  sendBtnA = createButton('A');
   sendBtnA.position(115, 300);
   sendBtnA.mousePressed(sendBtnAClick);
 
-  let sendBtnB = createButton('B');
+  sendBtnB = createButton('B');
   sendBtnB.position(165, 300);
   sendBtnB.mousePressed(sendBtnBClick);
 
-  let sendBtnS = createButton('S');
+  sendBtnS = createButton('S');
   sendBtnS.position(215, 300);
   sendBtnS.mousePressed(sendBtnSClick);
 
-  let sendBtnT = createButton('T');
+  sendBtnT = createButton('T');
   sendBtnT.position(265, 300);
   sendBtnT.mousePressed(sendBtnTClick);
   
@@ -51,7 +54,7 @@ function setup() {
   
   textSize(80)
   fill('#FF4B3E');
-  text('BOOMBA', 25, 100); // Dibujar el número actualizado
+  text('BOOMBA', 25, 80); // Dibujar el número actualizado
   
 }
 function tareaBomba(){
@@ -66,7 +69,7 @@ function tareaBomba(){
   if (mensaje !== "") {
       textSize(40);
       fill(mensajeColor); 
-      let x;
+      let x = (width - textWidth(mensaje)) / 2
       text(mensaje, x, 100);
   }
   
@@ -92,8 +95,7 @@ function tareaBomba(){
   
     
   else if (current_state == state_armada){
-           limpiarMensaje() 
-           while (tiempo>=0)
+             limpiarMensaje() 
              if ((millis-start_time) > intervalo){ //"Si ha pasado más de un segundo desde la última vez que revisé el tiempo..."
                 start_time = millis()  // Reiniciar el temporizador
                 tiempo -= 1}
@@ -135,37 +137,42 @@ function tareaBomba(){
 }
 
 function tareaEventos(){
-    if (sendBtnA.mousePressed(sendBtnAClick))   
-        isEvent = True
+    if (btnAClicked == true)   
+        isEvent = true
         eventData = 'A'
 
-    if (sendBtnB.mousePressed(sendBtnBClick))   
-        isEvent = True
+    if (btnBClicked == true)   
+        isEvent = true
         eventData = 'B'            
 
-    if (sendBtnS.mousePressed(sendBtnSClick))  
-        isEvent = True
+    if (btnSClicked == true)  
+        isEvent = true
         eventData = 'S'
 
-    if (sendBtnS.mousePressed(sendBtnSClick))
-        isEvent = True
+    if (btnTClicked == true)
+        isEvent = true
         eventData = 'T'
-        
-    if (port.write('A'))
-        isEvent = True
-        eventData = 'A'
   
-    if (port.write('B'))
-        isEvent = True
-        eventData = 'B'
   
-    if (port.write('S'))
-        isEvent = True
-        eventData = 'S'
-  
-    if (port.write('T'))
-        isEvent = True
-        eventData = 'T'
+    if(port.availableBytes() > 0){
+          let dataRx = port.read(1);
+          if(dataRx == 'A'){
+             isEvent = true
+             eventData = 'A'
+          }
+          else if(dataRx == 'B'){
+                  isEvent = true
+                  eventData = 'B'
+          }
+          else if(dataRx == 'S'){
+                  isEvent = true
+                  eventData = 'S'
+          }   
+          else if(dataRx == 'T'){
+                  isEvent = true
+                  eventData = 'T'
+          }
+     }
 }
 
 function draw() {
@@ -179,6 +186,7 @@ function draw() {
     else {
         connectBtn.html('Disconnect');
     }
+}
 
 function connectBtnClick() {
     if (!port.opened()) {
@@ -191,19 +199,16 @@ function connectBtnClick() {
 function displayRestart() {
   mensaje = "RESTART";
   mensajeColor = "#A5E65A"; // Verde
-  x = 130;
 }
 
 function displayBoom() {
   mensaje = "BOOM";
   mensajeColor = "#FF4B3E"; // Rojo
-  x = 140;
 }
 
 function displayError() {
   mensaje = "ERROR";
   mensajeColor = "#9E9E9E"; // gris
-  x = 140;
 }
 
 // Función para borrar el mensaje
@@ -227,6 +232,4 @@ function sendBtnSClick() {
 function sendBtnTClick() {
     btnTClicked = true
 } 
-
-}
 ```
