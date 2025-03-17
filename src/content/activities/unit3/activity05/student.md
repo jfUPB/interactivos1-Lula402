@@ -1,2 +1,2 @@
 ### Diagrama Bomba 3.0
-![State configuración (1)](https://github.com/user-attachments/assets/535fde2f-5a57-4e57-a8af-c84fe6c1198c)
+![State configuración (2)](https://github.com/user-attachments/assets/77d99bfe-f52f-488c-a733-72096c8c21db)
