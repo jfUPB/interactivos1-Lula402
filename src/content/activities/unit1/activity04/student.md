@@ -1,0 +1,3 @@
+### Transformación del diseñador en el Diseño generativo
+En el diseño generativo el rol del diseñador cambia, ya que este no solo crea sino que, empieza a explorar la reglas en vez de solo cumplirlas. El diseñador co-crea con la computadora de una manera nueva, a través de la conexión entre la tecnología y la comunicación en su trabajo, conviertiendose en un equipo creativo que puede crear entornos dinámicos. De esta manera se convierte en "conductor" en lugar de "artesano".
+En el diseño generativo se requieren nuevas habilidades como la exploración, comunicación con la maquina (programación) y permitirse intentar muchas posibilidades.
