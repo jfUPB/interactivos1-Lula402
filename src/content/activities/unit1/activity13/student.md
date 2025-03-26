@@ -1,0 +1,4 @@
+### Reflexión
+Me resultó facil entender los conceptos teóricos de esta unidad 1. Consultar, leer e inferir por mi misma fue suficiente para entender cosas como: input, output, diseño generativo, creative coding, cositas de Markdown y de JavaScript.
+Se me hizo difícil adaptarme a GitHub, pero lo logré. Me resultó también difícil explorar por mi cuenta algunas ideas en p5.js y entender su unión con la microbit, porque no conozco el lenguaje. La estrategias que usé para ayudarme fueron consultar, leer con calma, buscar como es la sintaxis en este lenguaje, hablar con ChatGPT, buscar temas de mi interés.
+Me gustó el proceso de la unidad 1, porque entendí como funcionaba el curso y además me siento emocionada de seguir aprendiendo más sobre lo interactivo que es como mi interés principal en la carrera.
