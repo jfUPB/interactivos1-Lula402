@@ -1,4 +1,39 @@
 <p align= center> Enviar por el puerto serial desde el Microbit </p>
+<p align= center> Experimento </p>
+
+#### ¿Qué bytes se enviarían por el puerto serial?
+Por el puerto serial se enviarían las parejitas de HEX correspondientes a cada CHAR:
+
+```39 36 39 2c 36 35 32 2c 54 72 75 65 2c 46 61 6c 73 65 0a```
+
+=
+
+``` 9  6  9  ,  6  5  2  ,  T  R  U  E  ,  F  A  L  S  E  \n```
+
+Cada parejita representa un número o una letra (char), cada parejita es de 8 bits, osea 1 byte.
+
+```py
+# Imports go at the top
+from microbit import *
+
+uart.init(115200)
+display.set_pixel(0,0,9)
+
+while True:
+    if button_a.was_pressed():
+        xValue = 969
+        yValue = 652
+        aState = True 
+        bState = False
+        data = "{},{},{},{}\n".format(xValue, yValue, aState,bState)
+        uart.write(data)
+```
+
+
+
+
+
+<p align= center> Preguntas </p>
 
 #### 1. ¿Qué información se está enviando?
 Se está enviando la info que hay en data, es decir: xValue, yValue, aState,bState.
