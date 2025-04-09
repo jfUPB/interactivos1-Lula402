@@ -1,4 +1,5 @@
 #### 1. ¿Para qué se usan estas imágenes? ¿Qué representan?
+Estas imagenes se usan para poder cambiar el tipo de pincel por decirlo así. Entonces estas imagenes son basicamente las puntas de pincel.
 
 #### 2. ¿Qué pasaría ahora si das click al botón? 
 Si al presionar el botón el puerto está cerrado, entonces se abre. Si al presionar el botón el puerto ya está abierto, entonces este se cierra.
@@ -52,4 +53,6 @@ Significa que el paquete de datos no está compuesto por 4 datos, sino por menos
 Esto pasa porque como es el momento inicial de haberse activado el código aun no recibe input desde el microbit, es decir, en esa primera iteración probablemente aun no se ha presionado ni movido todo lo del microbit. 
 
 #### 3. ¿Qué puedes hacer para solucionar este problema?
+No creo que sea necesario solucionarlo, no me parece un problema porque es lógico que al inicio no estén los 4 datos.
+Sin embargo lo que se podría hacer es inicializar esos 4 valores como (0,0,false,false), para que al arrancar el programa al menos esté el primer paquete de 4 datos.
 
