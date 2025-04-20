@@ -6,3 +6,4 @@ Se ve de esa manera porque yo le estoy pidiendo especificamente al receptor (la 
 ### 2.
 
 <img width="718" alt="image" src="https://github.com/user-attachments/assets/cae8dcea-683d-451b-8d5a-b7690b13f3c3" />
+
