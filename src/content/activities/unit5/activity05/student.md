@@ -1,0 +1,7 @@
+
+| Aspectos  | ASCII | BINARIO   | EJEMPLO   |
+| ------------- | ------------- | ------------- | ------------- |
+| **Eficiencia** | ✖ Es un código de texto, entonces para que la máquina lo entienda toca dar un paso más y lo traduce.| ✔ Es mucho más eficiente porque ya está en lenguaje de máquina. | Cuando usabamos ASCII en el puerto serial se veían ese código ASCII y al llegarle a p5.js, este tenía que trim-searlo, y split-searlo y aparte decir que eso lo tenía que tratar como un ***int***. |
+| **Velocidad** | ✖ Para expresar el mismo mensaje, ocupa más bytes, entonces se demora como el doble masomenos en llegar al receptor. | ✔  Para expresar el mismo mensaje, ocupa menos bytes, entonces llega mucho más rápido al receptor.  | Esto lo observé en la consola de p5.js: el código con ASCII demora el doble de tiempo en mostrar por consola los datos que recibe ***vs*** en Binario es casi que inmediado, uno ni logra contar cuanto tiempo.  |
+| **Facilidad**  | ✔  Es mucho más fácil para nosotros los humanos, ya que se entiende con ayuda de la tablita, entonces por ejemplo podemos debuggear más rápido.| ✖ Es más dificil para nosotros, porque el binario es más enredado decifrar. |  |
+| **Usos de recursos**  | ✖ Como el mensaje se demora más tiempo en llegar y además cuando llega toca traducirlo, gasta más recursos.  | ✔  Es más rápido de traducir y de procesar, entonces ahorra ese esfuerzo extra a los sistemas.  |  |
