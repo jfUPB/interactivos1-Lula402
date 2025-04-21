@@ -40,49 +40,20 @@ En la consola también veo el error de sincronización, porque se supone que en 
 
 ### 4.
 Ahora todo se ve en código binario
+
 <img width="721" alt="image" src="https://github.com/user-attachments/assets/d65bd47f-0b71-44e1-8a76-0e7fb347906b" />
 
 Y ahora el error de la consola de p5.js está estable y arreglado:
+
 <img width="347" alt="image" src="https://github.com/user-attachments/assets/c69cb1c6-4304-4202-9a5f-b0dc826e2ab1" />
 
 ### 5. 
-POR TERMINAR
-
+La diferencia es que en este que es el final, ya si se incluyó de nuevvo el cálculo de ***"windowWidth / 2;"*** y  ***"windowHeight / 2;"***, que sirve para poder acomodar esas cordenadas teniendo en cuenta los ejes y centro de el canvas en p5. Además acá no se está mostrando nada en consola, so el mensaje de que el Micro está concectado y que está listo para dibujar.
 ```js
 function readSerialData() {
-  // Acumula los bytes recibidos en el buffer
-  let available = port.availableBytes();
-  if (available > 0) {
-    let newData = port.readBytes(available);
-    serialBuffer = serialBuffer.concat(newData);
-  }
-
-  // Procesa el buffer mientras tenga al menos 8 bytes (tamaño de un paquete)
-  while (serialBuffer.length >= 8) {
-    // Busca el header (0xAA)
-    if (serialBuffer[0] !== 0xaa) {
-      serialBuffer.shift(); // Descarta bytes hasta encontrar el header
-      continue;
-    }
-
-    // Si hay menos de 8 bytes, espera a que llegue el paquete completo
-    if (serialBuffer.length < 8) break;
-
-    // Extrae los 8 bytes del paquete
-    let packet = serialBuffer.slice(0, 8);
-    serialBuffer.splice(0, 8); // Elimina el paquete procesado del buffer
-
-    // Separa datos y checksum
-    let dataBytes = packet.slice(1, 7);
-    let receivedChecksum = packet[7];
-    // Calcula el checksum sumando los datos y aplicando módulo 256
-    let computedChecksum = dataBytes.reduce((acc, val) => acc + val, 0) % 256;
-
-    if (computedChecksum !== receivedChecksum) {
-      console.log("Checksum error in packet");
-      continue; // Descarta el paquete si el checksum no es válido
-    }
-
+.
+.
+.
     // Si el paquete es válido, extrae los valores
     let buffer = new Uint8Array(dataBytes).buffer;
     let view = new DataView(buffer);
@@ -91,46 +62,15 @@ function readSerialData() {
     microBitAState = view.getUint8(4) === 1;
     microBitBState = view.getUint8(5) === 1;
     updateButtonStates(microBitAState, microBitBState);
-
-  }
 }
 ```
 
+Mientras que en este que es el anterior, aún se está dejando a ***X*** & ***Y*** tal cúal como llegan, sin volverlos a recentrar respecto al canvas. Además acá se sigue mostrando en consola el paquetico de lo que llega por el puerto: ***microBitX, microBitY, microBitAState, microBitBState.***
 ```js
 function readSerialData() {
-  // Acumula los bytes recibidos en el buffer
-  let available = port.availableBytes();
-  if (available > 0) {
-    let newData = port.readBytes(available);
-    serialBuffer = serialBuffer.concat(newData);
-  }
-
-  // Procesa el buffer mientras tenga al menos 8 bytes (tamaño de un paquete)
-  while (serialBuffer.length >= 8) {
-    // Busca el header (0xAA)
-    if (serialBuffer[0] !== 0xaa) {
-      serialBuffer.shift(); // Descarta bytes hasta encontrar el header
-      continue;
-    }
-
-    // Si hay menos de 8 bytes, espera a que llegue el paquete completo
-    if (serialBuffer.length < 8) break;
-
-    // Extrae los 8 bytes del paquete
-    let packet = serialBuffer.slice(0, 8);
-    serialBuffer.splice(0, 8); // Elimina el paquete procesado del buffer
-
-    // Separa datos y checksum
-    let dataBytes = packet.slice(1, 7);
-    let receivedChecksum = packet[7];
-    // Calcula el checksum sumando los datos y aplicando módulo 256
-    let computedChecksum = dataBytes.reduce((acc, val) => acc + val, 0) % 256;
-
-    if (computedChecksum !== receivedChecksum) {
-      console.log("Checksum error in packet");
-      continue; // Descarta el paquete si el checksum no es válido
-    }
-
+.
+.
+.
     // Si el paquete es válido, extrae los valores
     let buffer = new Uint8Array(dataBytes).buffer;
     let view = new DataView(buffer);
@@ -143,6 +83,5 @@ function readSerialData() {
     console.log(
       `microBitX: ${microBitX} microBitY: ${microBitY} microBitAState: ${microBitAState} microBitBState: ${microBitBState}`
     );
-  }
 }
 ```
