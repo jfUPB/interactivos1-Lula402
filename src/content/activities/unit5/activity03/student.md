@@ -39,8 +39,110 @@ En la consola también veo el error de sincronización, porque se supone que en 
 <img width="538" alt="image" src="https://github.com/user-attachments/assets/1b50f3e8-e312-4a14-b15e-1e8e876f7b17" />
 
 ### 4.
-POR REVISAR
-Ahora no veo nada en la consola de p5.js 😕, osea si veo lo de "Connected to serial port" "Microbit ready to draw", pero a partir de ahí la consola quedó vacía y aunque mueva el Micro no me muestra nada.
+Ahora todo se ve en código binario
+<img width="721" alt="image" src="https://github.com/user-attachments/assets/d65bd47f-0b71-44e1-8a76-0e7fb347906b" />
+
+Y ahora el error de la consola de p5.js está estable y arreglado:
+<img width="347" alt="image" src="https://github.com/user-attachments/assets/c69cb1c6-4304-4202-9a5f-b0dc826e2ab1" />
 
 ### 5. 
 POR TERMINAR
+
+```js
+function readSerialData() {
+  // Acumula los bytes recibidos en el buffer
+  let available = port.availableBytes();
+  if (available > 0) {
+    let newData = port.readBytes(available);
+    serialBuffer = serialBuffer.concat(newData);
+  }
+
+  // Procesa el buffer mientras tenga al menos 8 bytes (tamaño de un paquete)
+  while (serialBuffer.length >= 8) {
+    // Busca el header (0xAA)
+    if (serialBuffer[0] !== 0xaa) {
+      serialBuffer.shift(); // Descarta bytes hasta encontrar el header
+      continue;
+    }
+
+    // Si hay menos de 8 bytes, espera a que llegue el paquete completo
+    if (serialBuffer.length < 8) break;
+
+    // Extrae los 8 bytes del paquete
+    let packet = serialBuffer.slice(0, 8);
+    serialBuffer.splice(0, 8); // Elimina el paquete procesado del buffer
+
+    // Separa datos y checksum
+    let dataBytes = packet.slice(1, 7);
+    let receivedChecksum = packet[7];
+    // Calcula el checksum sumando los datos y aplicando módulo 256
+    let computedChecksum = dataBytes.reduce((acc, val) => acc + val, 0) % 256;
+
+    if (computedChecksum !== receivedChecksum) {
+      console.log("Checksum error in packet");
+      continue; // Descarta el paquete si el checksum no es válido
+    }
+
+    // Si el paquete es válido, extrae los valores
+    let buffer = new Uint8Array(dataBytes).buffer;
+    let view = new DataView(buffer);
+    microBitX = view.getInt16(0) + windowWidth / 2;
+    microBitY = view.getInt16(2) + windowHeight / 2;
+    microBitAState = view.getUint8(4) === 1;
+    microBitBState = view.getUint8(5) === 1;
+    updateButtonStates(microBitAState, microBitBState);
+
+  }
+}
+```
+
+```js
+function readSerialData() {
+  // Acumula los bytes recibidos en el buffer
+  let available = port.availableBytes();
+  if (available > 0) {
+    let newData = port.readBytes(available);
+    serialBuffer = serialBuffer.concat(newData);
+  }
+
+  // Procesa el buffer mientras tenga al menos 8 bytes (tamaño de un paquete)
+  while (serialBuffer.length >= 8) {
+    // Busca el header (0xAA)
+    if (serialBuffer[0] !== 0xaa) {
+      serialBuffer.shift(); // Descarta bytes hasta encontrar el header
+      continue;
+    }
+
+    // Si hay menos de 8 bytes, espera a que llegue el paquete completo
+    if (serialBuffer.length < 8) break;
+
+    // Extrae los 8 bytes del paquete
+    let packet = serialBuffer.slice(0, 8);
+    serialBuffer.splice(0, 8); // Elimina el paquete procesado del buffer
+
+    // Separa datos y checksum
+    let dataBytes = packet.slice(1, 7);
+    let receivedChecksum = packet[7];
+    // Calcula el checksum sumando los datos y aplicando módulo 256
+    let computedChecksum = dataBytes.reduce((acc, val) => acc + val, 0) % 256;
+
+    if (computedChecksum !== receivedChecksum) {
+      console.log("Checksum error in packet");
+      continue; // Descarta el paquete si el checksum no es válido
+    }
+
+    // Si el paquete es válido, extrae los valores
+    let buffer = new Uint8Array(dataBytes).buffer;
+    let view = new DataView(buffer);
+    microBitX = view.getInt16(0);
+    microBitY = view.getInt16(2);
+    microBitAState = view.getUint8(4) === 1;
+    microBitBState = view.getUint8(5) === 1;
+    updateButtonStates(microBitAState, microBitBState);
+
+    console.log(
+      `microBitX: ${microBitX} microBitY: ${microBitY} microBitAState: ${microBitAState} microBitBState: ${microBitBState}`
+    );
+  }
+}
+```
