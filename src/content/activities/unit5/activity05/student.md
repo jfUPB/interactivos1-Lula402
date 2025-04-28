@@ -46,6 +46,7 @@ Ese byte hace el papel de header, es decir el inicio del paquete de datos. En bi
 ***- A la siguiente parte del código se le conoce como programación funcional ¿Cómo opera la función reduce?***
 
 ***- ¿Por qué se compara el checksum enviado con el calculado? ¿Para qué sirve esto?***
+Se comparan para asegurarnos que si son 8 bytes en el paquete y además para asegurarnos que el módulo de 256 de la suma de los datos del paquete es la misma cuando fue enviado y cuando fue recibido. Esto sirva para chekear que el paquete no perdió datos y que si se esté contando el paquete como debe ser, por ejemplo en caso de que uno de los datos sea 0xaa como el header.
 
 ***- En el código anterior qué hace la instrucción continue? ¿Por qué?***
 
