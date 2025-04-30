@@ -62,13 +62,17 @@ La diferencia está en que slice hace un corte de un pedacito entre todos esos d
 En este caso se usó splice despues de slice porque el orden es: primero cortar el paquetico de datos con el que quiero trabajar (slice), luego como ya no quiero seguirlo teniendo en la fila de datos del puerto, le hago splice para limpiarlo. ¿por que no quiero seguirlo teniendo en la fila de datos? porque entonces esos datos van a seguir ahi esperando a que yo haga algo con ellos y pues eso es un error en comunicación porque si ya recibí el mensaje no debería porque volverlo a recibir.
 
 ***- A la siguiente parte del código se le conoce como programación funcional ¿Cómo opera la función reduce?***
+A la función ***reduce*** se le entregan dos varibles, es este caso una es ***acc** que es el acumuludor en el que voy  ir guardando el resultado y ***val** va a ser el valor de cada dato en el array, también se aclara que el acc va a iniciar en 0. Reduce basicamente va reduciendo ese array a un solo valor, porque lo que se está haciendo es sumar todos sus datos. 
 
+El dato #1 se mete en el acc, luego el dato #2 se le suma al acc, luego el dato #3 se le suma al acc...
 
 ***- ¿Por qué se compara el checksum enviado con el calculado? ¿Para qué sirve esto?***
 Se comparan para asegurarnos que si son 8 bytes en el paquete y además para asegurarnos que el módulo de 256 de la suma de los datos del paquete es la misma cuando fue enviado y cuando fue recibido. Esto sirva para chekear que el paquete no perdió datos y que si se esté contando el paquete como debe ser, por ejemplo en caso de que uno de los datos sea 0xaa como el header.
 
 ***- En el código anterior qué hace la instrucción continue? ¿Por qué?***
+En esa instrucción ***continiue*** hace lo mismo que hizo ahorita arriba. Se encarga de que si no se cumplió que el checksum enviado es igual al checksum recibido, entonces de una vuelve a hacer una nueva iteración del ciclo sin importar que hay después. Esto es porque no nos interesa seguir con las otras instrucciones si los datos tienen un error, entoces ***continiue*** dice "bueno, volvamos entonces a hacer todo desde arriba, ey while, vuelve a empezar porfa".
 
 ***- ¿Qué es un DataView? ¿Para qué se usa?***
+
 
 ***- ¿Por qué es necesario hacer estas conversiones y no simplemente se toman tal cual los datos del buffer?***
