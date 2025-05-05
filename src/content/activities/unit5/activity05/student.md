@@ -24,10 +24,11 @@ Fue necesario porque es como decir "Este paquetico empieza aquí y termina acá"
 Es ese byte que se establece como esa cosa que va a marcar cada paquete, de esa manera tanto el emisor (Micro) y el receptor (p5) van a saber donde arranca cada paquete. En este caso el ***header*** es el caracter de sincronización, porque no es realmente un dato sino que se pone para indicar que de ahí de empiezan a contar los 8 bytes.
 
 ### <p align=center>¿Qué es el checksum y para qué sirve?</p>
-El Checksum es ese byte que va al final del paquete de datos. Lo usamos para chekear que la cantidad de datos que se envió en ese paquete es la misma cantidad de datos del paquete que se recibió. Esto se hace de la siguiente manera: el cheksum hace una suma de los bytes del paquetico y le realiza la operación MOD (módulo) 256, esto es para que el resultado del MOD de la suma de esos 8 bytes quepa en 8bits.
-Esto es porque asi se asegura que el mayor resultado pueda ser 1111 1111 = 255
+El Checksum es ese byte que va al final del paquete de datos. Lo usamos para chekear que la cantidad de datos que se envió en ese paquete es la misma cantidad de datos del paquete que se recibió. Esto se hace de la siguiente manera: 
 
-!!!!!!!!
+- el cheksum hace una suma de los bytes del paquetico, uno por uno y los mete en un acumulador.
+- a la suma le realiza la operación MOD (módulo) 256, esto es para que con el resultado del MOD de la suma de esos 8 bytes nos podamos asegurar que cada byte quepa en 8bits.
+- Esto es porque asi se asegura que el mayor resultado pueda ser 1111 1111 = 255, que es el mayor numero que puede caber en 8 bits.
 
 
 ### <p align=center>En la función readSerialData() del programa en p5.js:</p
