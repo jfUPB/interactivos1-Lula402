@@ -14,4 +14,18 @@ La página localhost ha rechazado la conexión."***
 
 Esto es porque para empezar aunque se inició el server, no existe ese archivo que el cliente le pide al server para mandarselo.
 
+#### <p align=center> Page 1 -> pagina_uno  </p>
 
+Con page 1 no funciona sale el siguiente error: 
+
+<img width="150" alt="image" src="https://github.com/user-attachments/assets/c89a4106-7fb7-40c4-b6f0-dd6060fbf7e0" />
+
+Con pagina_uno si funciona, muestra el ID, me salió: b4427UtXnDJ8YbkiAAAD. Y también se ven los circulos en la ventana.
+
+#### <p align=center> ¿Qué te dice esto sobre cómo el servidor asocia URLs con respuestas? </p>
+Aunque cambie la ruta de acceso, con tal de que le siga diciendo que archivo es el que tiene que mandar, todo sigue funcionando bien. Es decir, aunque cambie la ruta de acceso a ***/pagina_uno*** con tal de que siga diciendo en code que debe enviar ***page1.html***, todo sigue funcionando.
+
+Pero debo tener en cuenta que el cliente debe tener esa misma ruta de acceso porque sino estoy intentando ver un navegador que no existe: ***not found***
+
+
+#### <p align=center> Page 1 -> pagina_uno  </p>
