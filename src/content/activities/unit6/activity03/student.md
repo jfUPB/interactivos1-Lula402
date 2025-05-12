@@ -4,10 +4,7 @@ Creo que es útil usar librerias porque, por qué vamos a escribir algo desde 0?
 
 #### <p align=center> ¿Qué ocurre? ¿Por qué? ¿Qué mensaje ves en el navegador o en su consola de desarrollador (F12)? </p>
 
-Lo siguiente ocurre en la consola:
-
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/586e51ce-b370-47d5-9b78-d70bba82ffda" />
-
+En la consola si me dejó arrancar el server.
 El server no puede iniciar y escuchar porque no encuentra los files necesarios para cumplir lo que el navegador le pide. El propio error dice que se debe a que no encuentra los files o el directory que intentamos acceder no existe.
 
 En el navegador veo el típico mensajito de:
@@ -15,7 +12,6 @@ En el navegador veo el típico mensajito de:
 ***"No se puede acceder a este sitio web
 La página localhost ha rechazado la conexión."***
 
-Esto es porque para empezar ni siquiera se inicio el server entonce el cliente no tiene a quien pedirle la info.
-
+Esto es porque para empezar aunque se inició el server, no existe ese archivo que el cliente le pide al server para mandarselo.
 
 
