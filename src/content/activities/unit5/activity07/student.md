@@ -1,0 +1,3 @@
+Me gustó porque fue algo importante de aprender, con esta unidad me siento más preparada para en el futuro aprender a comunicar sistemas entre si y recordar todo lo que hice en este curso.
+
+Para los próximos semestres creo que se podría mejorar la interacción con los otros, me explico, creo que sería interesante justo aprovechar esto de comunicación por el puerto serial y proponer una actividad que sea colaborativa. Se me ocurre en este momento que en parejas concretemos que datos queremos mandar, que tipo de datos son. Entonces el reto está en que uno programe lo del mirobit y que mi compañero programe en p5. Es una idea smuy cruda, pero creo que sirve como ejemplo para decir que depronto la interacción con un compañero le genere más interés a uno como estudiante.
