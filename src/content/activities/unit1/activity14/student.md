@@ -1,0 +1,2 @@
+### ¿Este curso para qué me sirve?
+Este curso me sirve para usar la programación y la comunicación entre sistemas, para crear aplicaciones interactivas entre el mundo digital y el físico. Desde mi perspectiva profesional este curso es muy importante para un ingeniero de entretenimiento digital, ya que nos da herramientas para cada vez ser más creativos e innovadores. Desde mi perspectiva personal este curso es el inicio para empezar por la linea de enfasis de la carrera que me gusta, experiencias interactivas.
