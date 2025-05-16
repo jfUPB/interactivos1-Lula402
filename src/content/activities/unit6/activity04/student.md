@@ -46,4 +46,6 @@ No, si dejo la ventana quieta no sale ningun mensaje en la consola
 Es eficiente porque si ya envíe esos datos, por que lo querría mandar otra vez? es que sería llenar la consola para nada, es mucho mejor solo hablar cuando hubo un cambio real. Esto es eficiente porque es mucho más facil hacer experimentos, entender lo que sale en consola y hacer un seguimiento de como se esta moviendo la ventana y de que datos está enviando.
 
 ### <p align= center> 5. La visualización (draw) </p>
+Al usar el (remotePageData.width), tuve que dividir entre 2 ese valor, porque si no no quedaba chevere, porque quedaba gigante, mientras que así sigue funcionando respecto al ancho de la otra page, pero sí se logra ver bien.
 
+https://youtu.be/0M2g9Qab16E
